@@ -1,0 +1,14 @@
+.navbar {
+  top: 80px;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 40%;
+  height: 100vh;
+  background-color: white;
+  grid-template-rows: auto 1fr auto;
+  box-shadow: hsl(360, 67%, 44%);
+  transition: all 0.3s linear;
+  /* transform: translate(-100%); */
+}

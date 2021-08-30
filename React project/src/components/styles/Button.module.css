@@ -1,0 +1,19 @@
+button {
+  width: 100%;
+  background-color: white;
+  display: block;
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  padding: 1rem 1.5rem;
+  color: hsl(210, 22%, 49%);
+  transition: all 0.3s linear;
+  border: none;
+  text-align: start;
+  cursor: pointer;
+}
+
+button:hover {
+  background: hsl(205, 86%, 81%);
+  color: hsl(205, 78%, 60%);
+  padding-left: 1.75rem;
+}
