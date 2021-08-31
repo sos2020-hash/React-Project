@@ -4,18 +4,20 @@ form {
   min-height: 20vh;
   min-width: 30vw;
   top: 80px;
-  left: 30rem;
+  left: 25rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: space-between;
   border: 3px solid white;
   border-radius: 10px;
+  display: none;
 }
 
 form input,
 form label,
-form select {
+form select,
+form textarea {
   min-height: 20px;
   margin: 5px 10px;
   padding: 5px 10px;

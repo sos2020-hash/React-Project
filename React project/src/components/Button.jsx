@@ -2,12 +2,12 @@ import React from 'react'
 import styles from './styles/Button.module.css'
 
 
-const Button = ({text ,className}) => {
+const Button = ({text ,showSidebar}) => {
    
 
     return (
         <div>
-            <button className={className}>{text}</button>
+            <button onClick={showSidebar}>{text}</button>
         </div>
     )
 }
