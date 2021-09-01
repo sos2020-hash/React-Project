@@ -1,7 +1,8 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Button from './Button'
 import styles from "./styles/Navbar.module.css"
-const Navbar = ({sideBar}) => {
+const Navbar = ({sideBar , setShowForm}) => {
+    
 
     return (
         <div 
@@ -14,7 +15,7 @@ const Navbar = ({sideBar}) => {
             <Button text={<i className="fas fa-school">School</i>}/>
             <Button text={<i className="fas fa-calendar-week">Today</i>}/>
             <Button text={<i className="far fa-eye">Show</i>}/>
-            <Button text={<i className="fas fa-plus">Add</i>}/>
+            <Button onAdd={setShowForm} text={<i className="fas fa-plus">Add</i>}/>
         </nav>
         <div>
             <Button text={<i className="fas fa-sign-in-alt">SIGN IN</i>}/>

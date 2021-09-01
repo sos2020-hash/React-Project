@@ -9,14 +9,3 @@
   justify-content: space-between;
   align-items: center;
 }
-
-.sidebar-toggle {
-  position: relative;
-  left: 2.5rem;
-  font-size: 2rem;
-  background: transparent;
-  border-color: transparent;
-  color: rgb(250, 248, 248);
-  transition: all 0.3s linear;
-  cursor: pointer;
-}
