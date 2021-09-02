@@ -26,7 +26,7 @@ function App() {
   }
 
   const deleteTask = async (id) => {
-    const res = await fetch(`http://localhost:8080/${id}`,{
+    const res = await fetch(`http://localhost:8080/todolist/${id}`,{
       method: "DELETE"
     })
     if (res.ok) {
@@ -35,7 +35,6 @@ function App() {
       alert("Error : Can not delete this task")
     }
   } 
-
 
   return (
     <div className="App">

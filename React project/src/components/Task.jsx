@@ -1,7 +1,8 @@
 import React from 'react'
 import Button from './Button'
+import DeleteBtn from './DeleteBtn'
 
-const Task = ({task, onDelete}) => {
+const Task = ({task, tasks, onDelete}) => {
     return (
         <div className="task-container">
         <div className="task-item">
@@ -14,7 +15,7 @@ const Task = ({task, onDelete}) => {
             <h2>{task.duedate}</h2>
             <h2>{task.status}</h2>
             <Button text={<i class="far fa-edit"></i>}/>
-            <Button onAdd={()=> onDelete(task.id)} text={<i class="fas fa-trash"></i>}/>
+            <DeleteBtn tasks={tasks} onDelete={onDelete} id={task.id} text={<i class="fas fa-trash"></i>}/>
             </div>
         </div>
     )
