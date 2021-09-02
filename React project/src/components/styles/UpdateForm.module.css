@@ -1,7 +1,8 @@
 form {
+  background-color: cadetblue;
   position: absolute;
   margin-top: 1.5rem;
-  min-height: 20vh;
+  min-height: 50vh;
   min-width: 30vw;
   top: 80px;
   left: 25rem;
@@ -10,13 +11,14 @@ form {
   align-content: space-between;
   border: 3px solid white;
   border-radius: 10px;
+  z-index: 10;
 }
 
 form input,
 form label,
 form select,
 form textarea {
-  min-height: 20px;
+  min-height: 40px;
   margin: 5px 10px;
   padding: 5px 10px;
   border: none;

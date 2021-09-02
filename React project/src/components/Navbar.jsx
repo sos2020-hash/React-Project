@@ -10,15 +10,15 @@ const Navbar = ({sideBar , setShowForm}) => {
         style={sideBar ? sidebarStyle : closeSiderStyle}
         >
         <nav >
-            <Button text={<i className="fas fa-home">Home</i>}/>
-            <Button text={<i className="fas fa-briefcase">Work</i>}/>
-            <Button text={<i className="fas fa-school">School</i>}/>
-            <Button text={<i className="fas fa-calendar-week">Today</i>}/>
-            <Button text={<i className="far fa-eye">Show</i>}/>
-            <Button onAdd={setShowForm} text={<i className="fas fa-plus">Add</i>}/>
+            <Button text={<i className="fas fa-home">&nbsp;&nbsp;Home</i>}/>
+            <Button text={<i className="fas fa-briefcase">&nbsp;Work</i>}/>
+            <Button text={<i className="fas fa-school">&nbsp;School</i>}/>
+            <Button text={<i className="fas fa-calendar-week">&nbsp;Today</i>}/>
+            <Button text={<i className="far fa-eye">&nbsp;Show</i>}/>
+            <Button onAdd={setShowForm} text={<i className="fas fa-plus">&nbsp;Add</i>}/>
         </nav>
         <div>
-            <Button text={<i className="fas fa-sign-in-alt">SIGN IN</i>}/>
+            <Button text={<i className="fas fa-sign-in-alt">&nbsp;SIGN IN</i>}/>
         </div>
         </div>
     )

@@ -10,46 +10,32 @@ import './App.css';
 function App() {
   const [sideBar, setSideBar] = useState(false)
   const [showForm , setShowForm] = useState(false)
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      name: 'working',
-      Description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis enim voluptatem vitae laboriosam atque praesentium, corrupti saepe eligendi quos, itaque provident sunt modi excepturi dolor culpa quis magni expedita. Dolorum?',
-      assignto: 'to do',
-      Duedate: '2021-09-01',
-      Status: 'clear',
-    },
-    {
-      id:2,
-      name: 'playing',
-      Description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis enim voluptatem vitae laboriosam atque praesentium, corrupti saepe eligendi quos, itaque provident sunt modi excepturi dolor culpa quis magni expedita. Dolorum?',
-      assignto: 'to do',
-      Duedate: '2021-09-01',
-      Status: 'clear',
-    },
-    {
-      id:3,
-      name: 'resting',
-      Description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis enim voluptatem vitae laboriosam atque praesentium, corrupti saepe eligendi quos, itaque provident sunt modi excepturi dolor culpa quis magni expedita. Dolorum?',
-      assignto: 'to do',
-      Duedate: '2021-09-01',
-      Status: 'clear',
-    },
-  ]);
+  const [tasks, setTasks] = useState([]);
 
-  // useEffect(() => {
-  //   fetchTasks()
-  // }, [])
+  useEffect(async () => {
+    const data = await fetchTasks()
+    console.log(data);
+    setTasks(data)
+  }, [])
 
 
   const fetchTasks = async () => {
-    const res = await fetch("http://localhost:3000/todolist")
+    const res = await fetch("http://localhost:8080/todolist")
     const data = await res.json()
-
-    console.log(data)
+    return data
   }
 
-  fetchTasks();
+  const deleteTask = async (id) => {
+    const res = await fetch(`http://localhost:8080/${id}`,{
+      method: "DELETE"
+    })
+    if (res.ok) {
+      setTasks(tasks.filter((task)=> task.id !== id))
+    } else {
+      alert("Error : Can not delete this task")
+    }
+  } 
+
 
   return (
     <div className="App">
@@ -58,19 +44,16 @@ function App() {
       />
       <Navbar 
       sideBar={sideBar} 
-      setShowForm={()=> {
-        setShowForm(!showForm)
-        console.log(showForm);
-      }}
+      setShowForm={()=> {setShowForm(!showForm)}}
       />
       <div className="area">
       <Calendar
         // onChange={onChange}
         // value={value}
       />
-      <UpdateForm  showForm={showForm}/>
+      <UpdateForm  showForm={showForm} setTasks={setTasks}/>
       <div className="lists">
-      <Tasks tasks={tasks}/>
+      <Tasks tasks={tasks} onDelete={deleteTask}/>
       </div>
       </div>
     </div>

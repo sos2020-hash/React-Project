@@ -17,3 +17,8 @@ button:hover {
   color: hsl(205, 78%, 60%);
   padding-left: 1.75rem;
 }
+
+
+.fas {
+  padding-right: 10px;
+}
