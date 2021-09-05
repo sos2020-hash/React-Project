@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import Navbar from './components/Navbar';
@@ -11,6 +12,7 @@ function App() {
   const [sideBar, setSideBar] = useState(false)
   const [showForm , setShowForm] = useState(false)
   const [tasks, setTasks] = useState([]);
+  const [task, setTask] = useState({});
 
   useEffect(async () => {
     const data = await fetchTasks()
@@ -36,7 +38,17 @@ function App() {
     }
   } 
 
+  // const updateTask = async (id) => {
+  //   const res = await fetch(`http://localhost:8080/todolist/${id}`,{
+  //     method="PUT"
+  //   })
+  //   if (res.ok) {
+  //     setTask((task) => )
+  //   }
+  // }
+
   return (
+    <Router>
     <div className="App">
       <Header 
       showSidebar={()=> setSideBar(!sideBar)}
@@ -46,16 +58,19 @@ function App() {
       setShowForm={()=> {setShowForm(!showForm)}}
       />
       <div className="area">
-      <Calendar
-        // onChange={onChange}
-        // value={value}
+        <Route path="/calendar" component={Calendar}/>
+      <UpdateForm  
+      showForm={showForm} 
+      setTasks={setTasks} 
+        setShowForm={setShowForm}
       />
-      <UpdateForm  showForm={showForm} setTasks={setTasks}/>
+      <Route path="/" exact />
       <div className="lists">
       <Tasks tasks={tasks} onDelete={deleteTask}/>
       </div>
       </div>
     </div>
+    </Router>
   );
 }
 
