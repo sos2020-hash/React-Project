@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 
 const UpdateBtn = ({onUpdate, id}) => {
     return (
-        <div>
-            <button onClick={() => onUpdate(id)}><i class="far fa-edit"></i></button>
+        <div className="taskBtn-container">
+            <button className="taskBtn" onClick={() => onUpdate(id)}><i class="far fa-edit"></i></button>
         </div>
     )
 }

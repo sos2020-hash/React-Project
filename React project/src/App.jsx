@@ -19,7 +19,6 @@ function App() {
 
   useEffect(async () => {
     const data = await fetchTasks()
-    console.log(data);
     setTasks(data)
   }, [])
 
@@ -46,30 +45,17 @@ function App() {
     setTaskEditId(id);
   }
 
-  const handleSumit = (task) => {
-            setTasks((tasks) => {
-            for (let savedTask of tasks) {
-                if (savedTask.id == taskEditId) {
-                  savedTask = {...task}
-                }
-            }
-        })
+  const handleSumit = task => {
+    setTask(task);
+    tasks.map((currentTask) => {
+      if (currentTask.id === task.id) {
+        currentTask = {...task}
+      }
+    })
+    setTask({});
+    window.alert('Update Success!')
+    window.location.href = '/';
   }
-
-
-  // const updateTask = async (id) => {
-  //   const res = await fetch(`http://localhost:8080/todolist/${id}`,{
-  //     method="PUT"
-  //   })
-  //   if (res.ok) {
-  //     setTask(task)
-  //     tasks.map((savedTask) => {
-  //       if (savedTask.id == id) {
-  //         savedTask = Task 
-  //       }
-  //     })
-  //   }
-  // }
 
   return (
     <Router>
@@ -96,7 +82,11 @@ function App() {
       />
       <Route path="/" exact />
       <div className="lists">
-      <Tasks tasks={tasks} onDelete={deleteTask} onUpdate={handleUpdate}/>
+      <Tasks 
+      tasks={tasks} 
+      onDelete={deleteTask} 
+      onUpdate={handleUpdate}
+      />
       </div>
       </div>
     </div>

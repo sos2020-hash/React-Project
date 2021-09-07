@@ -7,6 +7,8 @@
   background-color: cornflowerblue;
   display: flex;
   justify-content: space-between;
+  text-shadow: 2px 2px 2px;
+  color: white;
   align-items: center;
   z-index: 11;
 }

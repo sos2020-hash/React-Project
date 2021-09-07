@@ -1,9 +1,9 @@
 form {
-  background-color: cadetblue;
-  position: absolute;
+  background-color: #15172b;
+  position: relative;
   margin-top: 1.5rem;
-  min-height: 50vh;
-  min-width: 30vw;
+  height: 50vh;
+  width: 30vw;
   top: 80px;
   left: 25rem;
   flex-direction: column;
@@ -18,10 +18,11 @@ form input,
 form label,
 form select,
 form textarea {
-  min-height: 40px;
+  min-height: 35px;
   margin: 5px 10px;
   padding: 5px 10px;
+  font-weight: 600;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
 }

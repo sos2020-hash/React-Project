@@ -1,0 +1,9 @@
+button {
+    left: 2.5rem;
+    font-size: 1.5rem;
+    background-color: cornflowerblue;
+    border-color: cornflowerblue;
+    color: white;
+    transition: all 0.3s linear;
+    cursor: pointer;
+}
