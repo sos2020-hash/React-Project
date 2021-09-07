@@ -3,14 +3,12 @@ import styles from './styles/Button.module.css'
 import { Link } from 'react-router-dom'
 
 
-const Button = ({onAdd, text, style}) => {
-   
-
+const UpdateBtn = ({onUpdate, id}) => {
     return (
         <div>
-            <button onClick={onAdd} className={style}>{text}</button>
+            <button onClick={() => onUpdate(id)}><i class="far fa-edit"></i></button>
         </div>
     )
 }
 
-export default Button
+export default UpdateBtn

@@ -2,38 +2,34 @@ import React,{useState} from 'react'
 import styles from "./styles/UpdateForm.module.css"
 import { useForm } from 'react-hook-form';
 
-const UpdateForm = ({showForm , setTasks }) => {
+const UpdateTask = ({showEditForm , setTask , setTasks, taskEditId, onEdit}) => {
+console.log({taskEditId});
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [isSubmit, setSubmit] = useState(false)
   const onSubmit = async (data) => {
     console.log(data);
     const formObj = {
-      id: data.id,
+      id: taskEditId,
       name:data.Name,
       description: data.Description,
       assignedto: data.AssignedTo,
       duedate: data.Duedate,
       status: data.Status,
     }
-    const res = await fetch('http://localhost:8080/todolist',{
-      method:'POST',
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(formObj),
-    });
-    const message = await res.json()
-    if (res.status === 200) {
-      setTasks((tasks) => [...tasks, formObj])
-    } else {
-      console.log(message);
+    console.log(formObj);
+    const res = await fetch(`http://localhost:8080/todolist/${taskEditId}`,{
+        method: "PUT",
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(formObj)
+    })
+    if(res.ok) {
+        onEdit(formObj);
     }
-    setSubmit(true)
   }
 
   return (
     <form 
-    style={showForm ? showStyle : closeShowStyle}
+    style={showEditForm ? showStyle : closeShowStyle}
     onSubmit={handleSubmit(onSubmit)}
     >
       <input type="text" placeholder="Name" {...register("Name", {required: true, min: 3, maxLength: 80})} />
@@ -62,4 +58,4 @@ const closeShowStyle = {
   display: "none"
 }
 
-export default UpdateForm
+export default UpdateTask

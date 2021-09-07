@@ -5,14 +5,17 @@ import 'react-calendar/dist/Calendar.css';
 import Navbar from './components/Navbar';
 import Header from './components/Header';
 import UpdateForm from './components/UpdateForm';
+import UpdateTask from './components/UpdateTask';
 import Tasks from './components/Tasks';
 import './App.css';
 
 function App() {
   const [sideBar, setSideBar] = useState(false)
   const [showForm , setShowForm] = useState(false)
+  const [showEditForm , setShowEditForm] = useState(false)
   const [tasks, setTasks] = useState([]);
   const [task, setTask] = useState({});
+  const [taskEditId, setTaskEditId] = useState(null);
 
   useEffect(async () => {
     const data = await fetchTasks()
@@ -38,12 +41,33 @@ function App() {
     }
   } 
 
+  const handleUpdate = (id) => {
+    setShowEditForm(!showEditForm);
+    setTaskEditId(id);
+  }
+
+  const handleSumit = (task) => {
+            setTasks((tasks) => {
+            for (let savedTask of tasks) {
+                if (savedTask.id == taskEditId) {
+                  savedTask = {...task}
+                }
+            }
+        })
+  }
+
+
   // const updateTask = async (id) => {
   //   const res = await fetch(`http://localhost:8080/todolist/${id}`,{
   //     method="PUT"
   //   })
   //   if (res.ok) {
-  //     setTask((task) => )
+  //     setTask(task)
+  //     tasks.map((savedTask) => {
+  //       if (savedTask.id == id) {
+  //         savedTask = Task 
+  //       }
+  //     })
   //   }
   // }
 
@@ -62,11 +86,17 @@ function App() {
       <UpdateForm  
       showForm={showForm} 
       setTasks={setTasks} 
-        setShowForm={setShowForm}
+      />
+      <UpdateTask 
+      onEdit={handleSumit}
+      showEditForm={showEditForm}
+      taskEditId={taskEditId}
+      setTask={setTask} 
+      setTasks={setTasks}
       />
       <Route path="/" exact />
       <div className="lists">
-      <Tasks tasks={tasks} onDelete={deleteTask}/>
+      <Tasks tasks={tasks} onDelete={deleteTask} onUpdate={handleUpdate}/>
       </div>
       </div>
     </div>
