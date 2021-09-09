@@ -10,14 +10,18 @@ const Navbar = ({ sideBar, setShowForm }) => {
       style={sideBar ? sidebarStyle : closeSiderStyle}
     >
       <nav>
+        <Link to="/">
+        <Button text={<i class="fas fa-house-user"></i>}/>
+        </Link>
+        <Link to="/home">
         <Button text={<i className="fas fa-home">&nbsp;&nbsp;Home</i>} />
+        </Link>
+        <Link to="/work">
         <Button text={<i className="fas fa-briefcase">&nbsp;&nbsp;Work</i>} />
+        </Link>
+        <Link to="school">
         <Button text={<i className="fas fa-school">&nbsp;&nbsp;School</i>} />
-        <ShowBtn
-          path={"/calendar"}
-          text={<i className="fas fa-calendar-week">&nbsp;&nbsp;Calendar</i>}
-        />
-        <Button text={<i className="far fa-eye">&nbsp;Show</i>} />
+        </Link>
         <Button
           onAdd={setShowForm}
           text={<i className="fas fa-plus">&nbsp;&nbsp;Add</i>}

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
+import { Switch } from "react-router";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Header from "./components/Header";
 import UpdateForm from "./components/UpdateForm";
@@ -67,44 +66,57 @@ function App() {
       <Route path="/siginin">
         <Signin />
       </Route>
-      <Route path="/" exact>
-        <Header showSidebar={() => setSideBar(!sideBar)} />
-        <Navbar
-          sideBar={sideBar}
-          setShowForm={() => {
-            setShowForm(!showForm);
-          }}
+      <Header showSidebar={() => setSideBar(!sideBar)} />
+      <Navbar
+        sideBar={sideBar}
+        setShowForm={() => {
+          setShowForm(!showForm);
+        }}
+      />
+      <div className="area">
+        <UpdateForm showForm={showForm} setTasks={setTasks} />
+        <UpdateTask
+          onEdit={handleSumit}
+          showEditForm={showEditForm}
+          taskEditId={taskEditId}
+          setTask={setTask}
+          setTasks={setTasks}
         />
-        <div className="area">
-          <UpdateForm showForm={showForm} setTasks={setTasks} />
-          <UpdateTask
-            onEdit={handleSumit}
-            showEditForm={showEditForm}
-            taskEditId={taskEditId}
-            setTask={setTask}
-            setTasks={setTasks}
-          />
-          <div className="lists">
-            <Switch>
-              <Route path="/" exact>
-                <Tasks
-                  tasks={tasks}
-                  onDelete={deleteTask}
-                  onUpdate={handleUpdate}
-                />
-              </Route>
-              <Route path="/work">
-                <SelectedTasks
-                  tasks={tasks}
-                  onDelete={deleteTask}
-                  onUpdate={handleUpdate}
-                  onSelect="Work"
-                />
-              </Route>
-            </Switch>
-          </div>
+        <div className="lists">
+          <Route exact path="/">
+            <Tasks
+              tasks={tasks}
+              onDelete={deleteTask}
+              onUpdate={handleUpdate}
+            />
+          </Route>
+          <Route path="/home">
+            <SelectedTasks
+              tasks={tasks}
+              onDelete={deleteTask}
+              onUpdate={handleUpdate}
+              onSelect="Home"
+            />
+          </Route>
+          <Route path="/work">
+            <SelectedTasks
+              tasks={tasks}
+              onDelete={deleteTask}
+              onUpdate={handleUpdate}
+              onSelect="Work"
+            />
+          </Route>
+          <Route path="/school">
+            <SelectedTasks
+              tasks={tasks}
+              onDelete={deleteTask}
+              onUpdate={handleUpdate}
+              onSelect="School"
+            />
+          </Route>
+    
         </div>
-      </Route>
+      </div>
     </div>
   );
 }

@@ -5,16 +5,13 @@ const SelectedTasks = ({ tasks, onDelete, onUpdate, onSelect }) => {
   return (
     <>
       {tasks.map((task) => {
-        if (task.assignedto == onSelect) {
-          console.log(task);
-          return (
-            <Task
+        if (task.assignedto === onSelect) {
+          return (<Task
               key={task.id}
               task={task}
               onDelete={onDelete}
               onUpdate={onUpdate}
-            />
-          );
+            />)
         }
       })}
     </>

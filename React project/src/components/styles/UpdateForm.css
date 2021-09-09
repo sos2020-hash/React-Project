@@ -1,11 +1,11 @@
-.items-form {
+#form {
   padding: 15px;
   background-color: cornflowerblue;
   position: absolute;
   margin-top: 1.5rem;
-  height: 50vh;
+  height: fit-content;
   width: fit-content;
-  top: 20%;
+  top: 15%;
   left: 40%;
   flex-direction: column;
   justify-content: center;
@@ -15,7 +15,24 @@
   z-index: 10;
 }
 
-.items-form select {
+#form-task {
+  padding: 15px;
+  background-color: cornflowerblue;
+  position: absolute;
+  margin-top: 1.5rem;
+  height: fit-content;
+  width: fit-content;
+  top: 15%;
+  left: 40%;
+  flex-direction: column;
+  justify-content: center;
+  align-content: space-between;
+  border: 3px solid white;
+  border-radius: 10px;
+  z-index: 10;
+}
+
+form select {
   display: block;
   font-size: 16px;
   font-family: sans-serif;
@@ -41,9 +58,9 @@
   background-size: 0.65em auto, 100%;
 }
 
-.items-form textarea,
-.items-form input,
-.items-form label {
+form textarea,
+form input,
+form label {
   display: block;
   font-size: 16px;
   font-family: sans-serif;

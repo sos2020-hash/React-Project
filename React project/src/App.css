@@ -14,8 +14,6 @@ body {
 
 .area {
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
 }
 
 .react-calendar {
@@ -29,8 +27,9 @@ body {
 
 .lists {
   width: 60%;
+  height: 60%;
   position: relative;
-  top: 150px;
+  top: 8rem;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
@@ -45,6 +44,7 @@ body {
   padding: 10px;
   background-color: white;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
   border-radius: 5px;
@@ -100,17 +100,6 @@ body {
   font-size: 1rem;
 }
 
-@media only screen and (max-width: 600px) {
-  .task-item {
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .lists .task-container {
-    width: 30vw;
-    height: fit-content;
-  }
-}
 
 @media only screen and (min-width: 1300px) {
   .lists {

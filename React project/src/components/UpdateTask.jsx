@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./styles/UpdateForm.module.css";
+import "./styles/UpdateForm.css";
 import { useForm } from "react-hook-form";
 
 const UpdateTask = ({
@@ -39,7 +39,7 @@ const UpdateTask = ({
 
   return (
     <form
-      className="items-form"
+      id='form-task'
       style={showEditForm ? showStyle : closeShowStyle}
       onSubmit={handleSubmit(onSubmit)}
     >

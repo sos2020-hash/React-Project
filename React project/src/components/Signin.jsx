@@ -38,69 +38,71 @@ const Signin = () => {
     }
   }
   return (
-    <div class="container">
-      <form class="form form" id="createAccount" onSubmit={handleSubmit}>
-        <h1 class="form__title">Create Account</h1>
-        <div class="form__message form__message--error"></div>
-        <div class="form__input-group">
+    <div className='body'>
+    <div className="container">
+      <form className="form form" id="createAccount" onSubmit={handleSubmit}>
+        <h1 className="form__title">Create Account</h1>
+        <div className="form__message form__message--error"></div>
+        <div className="form__input-group">
           <input
             type="text"
             id="signupUsername"
-            class="form__input"
+            className="form__input"
             autofocus
             placeholder="Username"
             name="username"
             onChange={(e) => setUserName(e.target.value)}
           />
-          <div class="form__input-error-message"></div>
+          <div className="form__input-error-message"></div>
         </div>
-        <div class="form__input-group">
+        <div className="form__input-group">
           <input
             type="text"
-            class="form__input"
+            className="form__input"
             autofocus
             placeholder="Email Address"
           />
-          <div class="form__input-error-message"></div>
+          <div className="form__input-error-message"></div>
         </div>
-        <div class="form__input-group">
+        <div className="form__input-group">
           <input
             type="password"
-            class="form__input"
+            className="form__input"
             autofocus
             placeholder="Password"
             name="password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <div class="form__input-error-message"></div>
+          <div className="form__input-error-message"></div>
         </div>
-        <div class="form__input-group">
+        <div className="form__input-group">
           <input
             type="password"
-            class="form__input"
+            className="form__input"
             name="Rpassword"
             autofocus
             placeholder="Confirm password"
             onChange={(e) => setRepeatPassword(e.target.value)}
           />
-          <div class="form__input-error-message"></div>
+          <div className="form__input-error-message"></div>
         </div>
-        <button class="form__button" type="submit" disabled={!validateForm()}>
+        <button className="form__button" type="submit" disabled={!validateForm()}>
           Continue
         </button>
 
-        <p class="form__text">
-          <a class="form__link" href="./login" id="linkLogin">
+        <p className="form__text">
+          <a className="form__link" href="./login" id="linkLogin">
             Already have an account? log in
           </a>
         </p>
 
-        <p class="form_back">
-          <a href="./" class="classbacktohome">
+        <p className="form_back">
+          <a href="./" className="backtohome">
             Do you want to back home page?
           </a>
         </p>
       </form>
+    </div>
     </div>
   );
 };
