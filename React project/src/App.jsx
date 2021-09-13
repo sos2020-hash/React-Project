@@ -73,50 +73,62 @@ function App() {
           setShowForm(!showForm);
         }}
       />
-      <div className="area">
-        <UpdateForm showForm={showForm} setTasks={setTasks} />
-        <UpdateTask
-          onEdit={handleSumit}
-          showEditForm={showEditForm}
-          taskEditId={taskEditId}
-          setTask={setTask}
-          setTasks={setTasks}
-        />
-        <div className="lists">
-          <Route exact path="/">
-            <Tasks
-              tasks={tasks}
-              onDelete={deleteTask}
-              onUpdate={handleUpdate}
-            />
-          </Route>
-          <Route path="/home">
-            <SelectedTasks
-              tasks={tasks}
-              onDelete={deleteTask}
-              onUpdate={handleUpdate}
-              onSelect="Home"
-            />
-          </Route>
-          <Route path="/work">
-            <SelectedTasks
-              tasks={tasks}
-              onDelete={deleteTask}
-              onUpdate={handleUpdate}
-              onSelect="Work"
-            />
-          </Route>
-          <Route path="/school">
-            <SelectedTasks
-              tasks={tasks}
-              onDelete={deleteTask}
-              onUpdate={handleUpdate}
-              onSelect="School"
-            />
-          </Route>
-    
+      {localStorage.getItem("login") ? (
+        <div className="area">
+          <UpdateForm showForm={showForm} setTasks={setTasks} />
+          <UpdateTask
+            onEdit={handleSumit}
+            showEditForm={showEditForm}
+            taskEditId={taskEditId}
+            setTask={setTask}
+            setTasks={setTasks}
+          />
+          <div className="lists">
+            <Route exact path="/">
+              <Tasks
+                tasks={tasks}
+                onDelete={deleteTask}
+                onUpdate={handleUpdate}
+              />
+            </Route>
+            <Route path="/home">
+              <SelectedTasks
+                tasks={tasks}
+                onDelete={deleteTask}
+                onUpdate={handleUpdate}
+                onSelect="Home"
+              />
+            </Route>
+            <Route path="/work">
+              <SelectedTasks
+                tasks={tasks}
+                onDelete={deleteTask}
+                onUpdate={handleUpdate}
+                onSelect="Work"
+              />
+            </Route>
+            <Route path="/school">
+              <SelectedTasks
+                tasks={tasks}
+                onDelete={deleteTask}
+                onUpdate={handleUpdate}
+                onSelect="School"
+              />
+            </Route>
+          </div>
         </div>
-      </div>
+      ) : (
+        <h1
+          className="area"
+          style={{
+            position: "relative",
+            top: "13rem",
+            justifyContent: "center",
+          }}
+        >
+          Please login to assess the tasks
+        </h1>
+      )}
     </div>
   );
 }

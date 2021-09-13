@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./styles/UpdateForm.css";
 import { useForm } from "react-hook-form";
 
@@ -8,9 +8,7 @@ const UpdateForm = ({ showForm, setTasks }) => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const [isSubmit, setSubmit] = useState(false);
   const onSubmit = async (data) => {
-    console.log(data);
     const formObj = {
       id: data.id,
       name: data.name,
@@ -26,18 +24,16 @@ const UpdateForm = ({ showForm, setTasks }) => {
       },
       body: JSON.stringify(formObj),
     });
-    const message = await res.json();
     if (res.status === 200) {
       setTasks((tasks) => [...tasks, formObj]);
     } else {
-      console.log(message);
+      console.log(errors);
     }
-    setSubmit(true);
   };
 
   return (
     <form
-      id='form'
+      id="form"
       style={showForm ? showStyle : closeShowStyle}
       onSubmit={handleSubmit(onSubmit)}
     >
